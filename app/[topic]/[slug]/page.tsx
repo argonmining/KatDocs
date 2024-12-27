@@ -9,8 +9,6 @@ import PageNavigation from '@/components/ui/page-navigation'
 import Footer from '@/components/ui/footer'
 import SecondaryNav from '@/components/ui/secondary-nav'
 
-export const runtime = 'edge'
-
 export async function generateStaticParams() {
   const allBlogs = getDocPages();
 
