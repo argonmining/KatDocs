@@ -8,8 +8,6 @@ import PostAccordion from './accordion'
 import PostTag from './tag'
 import PostTable, { TableHead, TableBody, TableHeadRow, TableBodyRow, TableTh, TableTd } from './table'
 
-import rehypePrettyCode from "rehype-pretty-code";
-
 const transformToSlug = (input: string) => {
   return input
     .toLowerCase()
@@ -57,34 +55,35 @@ const mdxComponents = {
   Td: TableTd,
 };
 
-export function CustomMDX(props: any) {
-  const rehypePrettyCodeOptions = {
-    theme: "one-dark-pro",
-    keepBackground: false,
-    onVisitLine(node: any) {
-      // Prevent lines from collapsing in `display: grid` mode, and
-      // allow empty lines to be copy/pasted
-      if (node.children.length === 0) {
-        node.children = [{ type: "text", value: " " }];
-      }
-    },
-    onVisitHighlightedLine(node: any) {
-      // Each line node by default has `class="line"`.
-      node.properties.className.push("line--highlighted");
-    },
-    onVisitHighlightedWord(node: any) {
-      // Each word node has no className by default.
-      node.properties.className = ["word--highlighted"];
-    },
-  };
-
+export function CustomMDX({ source }: { source: any }) {
   return (
     <MDXRemote
-      {...props}
-      components={{ ...mdxComponents, ...(props.components || {}) }}
+      source={source}
+      components={mdxComponents}
       options={{
         mdxOptions: {
-          rehypePlugins: [[rehypePrettyCode, rehypePrettyCodeOptions]],
+          remarkPlugins: [require('remark-gfm')],
+          rehypePlugins: [
+            require('rehype-slug'),
+            [
+              require('rehype-pretty-code'),
+              {
+                theme: "one-dark-pro",
+                keepBackground: false,
+                onVisitLine(node: any) {
+                  if (node.children.length === 0) {
+                    node.children = [{ type: "text", value: " " }];
+                  }
+                },
+                onVisitHighlightedLine(node: any) {
+                  node.properties.className.push("line--highlighted");
+                },
+                onVisitHighlightedWord(node: any) {
+                  node.properties.className = ["word--highlighted"];
+                },
+              }
+            ]
+          ],
         },
       }}
     />

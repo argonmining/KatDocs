@@ -8,23 +8,24 @@ import Feedback from '@/components/ui/feedback'
 import PageNavigation from '@/components/ui/page-navigation'
 import Footer from '@/components/ui/footer'
 import SecondaryNav from '@/components/ui/secondary-nav'
-import fs from 'fs'
-import path from 'path'
+import { getMdxContent } from '@/lib/mdx'
+
+export const runtime = 'edge'
 
 export async function generateStaticParams() {
   const allDocs = getDocPages();
   return allDocs.map((doc) => ({
+    topic: doc.metadata.topicSlug || 'documentation',
     slug: doc.slug,
   }))
 }
 
 export async function generateMetadata(
   props: {
-    params: Promise<{ slug: string }>
+    params: { topic: string; slug: string }
   }
 ): Promise<Metadata | undefined> {
-  const params = await props.params;
-  const doc = getDocPages().find((doc) => doc.slug === params.slug);
+  const doc = getDocPages().find((doc) => doc.slug === props.params.slug);
 
   if (!doc) {
     return;
@@ -38,15 +39,14 @@ export async function generateMetadata(
   };
 }
 
-export default async function Post({ params }: { params: { slug: string } }) {
+export default async function Post({ params }: { params: { topic: string; slug: string } }) {
   const doc = getDocPages().find((doc) => doc.slug === params.slug);
 
   if (!doc) {
     notFound();
   }
 
-  // Get MDX content
-  const content = await getDocContent(doc.slug);
+  const content = await getMdxContent(params.slug);
   
   if (!content) {
     notFound();
@@ -110,14 +110,4 @@ export default async function Post({ params }: { params: { slug: string } }) {
       </article>
     </>
   )
-}
-
-async function getDocContent(slug: string) {
-  try {
-    const filePath = path.join(process.cwd(), 'content/docs', `${slug}.mdx`)
-    return await import(`@/content/docs/${slug}.mdx`)
-  } catch (error) {
-    console.error(`Error importing MDX file for slug ${slug}:`, error)
-    return null
-  }
 }
