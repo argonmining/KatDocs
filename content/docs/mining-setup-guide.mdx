@@ -1,0 +1,80 @@
+---
+title: "ASIC Mining Setup Guide"
+summary: "Complete guide for setting up your Kaspa ASIC miners with Kat Pool, including configuration for IceRiver and Bitmain ASICs."
+topicTitle: "Guides / Tutorials"
+topicSlug: "guides"
+nextTitle: "Advanced Configuration"
+nextSlug: "/guides/advanced-configuration"   
+---
+
+## Quick Start Guide
+
+This guide will walk you through setting up your ASIC miner with Kat Pool. We currently support IceRiver and Bitmain Kaspa ASICs, with Goldshell support coming soon.
+
+## Supported Hardware
+
+* IceRiver KAS-X1
+* IceRiver KAS-X2
+* Bitmain K1
+* Bitmain K2
+* Coming Soon: Goldshell KAS-1/KAS-2
+
+## Basic Requirements
+
+* Supported ASIC miner
+* Kaspa wallet address
+* Stable internet connection
+* Proper cooling setup
+* Adequate power supply
+
+## Miner Configuration
+
+### IceRiver Setup
+```bash
+Pool URL: stratum+tcp://pool.katpool.io:15000
+Worker: YOUR_KASPA_WALLET_ADDRESS
+Password: x
+```
+
+### Bitmain Setup
+```bash
+Pool URL: stratum+tcp://pool.katpool.io:15000
+Worker: YOUR_KASPA_WALLET_ADDRESS
+Password: x
+```
+
+
+<Banner type="important">
+Replace YOUR_KASPA_WALLET_ADDRESS with your actual Kaspa wallet address. The WORKER_NAME is optional and can help identify different miners.
+</Banner>
+
+## Monitoring Your Mining
+
+Monitor your mining status through:
+
+* Pool dashboard: [https://katpool.io/dashboard](https://katpool.io/dashboard)
+* ASIC web interface
+* Pool statistics page
+
+<Table>
+  <THead>
+    <ThRow>
+      <Th>Metric</Th>
+      <Th>Description</Th>
+    </ThRow>
+  </THead>
+  <TBody>
+    <TbRow>
+      <Td><Tag color="teal">Hashrate</Tag></Td>
+      <Td>Your current mining speed in TH/s</Td>
+    </TbRow>
+    <TbRow>
+      <Td><Tag color="purple">Shares</Tag></Td>
+      <Td>Valid shares submitted to pool</Td>
+    </TbRow>
+    <TbRow>
+      <Td><Tag color="rose">Rewards</Tag></Td>
+      <Td>Pending and paid KAS rewards</Td>
+    </TbRow>
+  </TBody>
+</Table>

@@ -1,0 +1,42 @@
+---
+title: "Bitmain ASIC Setup"
+summary: "Complete guide for setting up Bitmain K1 and K2 miners with Kat Pool"
+topicTitle: "Documentation"
+topicSlug: "documentation"
+prevTitle: "IceRiver Setup"
+prevSlug: "/documentation/mining-setup/iceriver"
+nextTitle: "ASIC Optimization"
+nextSlug: "/documentation/advanced/optimization"
+---
+
+## Bitmain K1/K2 Setup Guide
+
+Configuration guide for Bitmain K1 and K2 ASIC miners.
+
+### Quick Configuration
+
+```bash
+Pool URL: stratum+tcp://pool.katpool.io:15000
+Worker: YOUR_KASPA_WALLET_ADDRESS.WORKER_NAME
+Password: x
+```
+
+### Web Interface Setup
+
+1. Access your miner's web interface
+2. Navigate to "Miner Configuration"
+3. Configure pool settings:
+   - URL: `stratum+tcp://pool.katpool.io:15000`
+   - Worker: Your Kaspa wallet address
+   - Password: x
+
+<Banner type="important">
+The WORKER_NAME is optional but helps identify different miners in your dashboard.
+</Banner>
+
+### Optimization Settings
+
+Recommended settings for K1/K2:
+- Operating temperature: 60-70°C
+- Humidity: Below 65%
+- Proper ventilation required

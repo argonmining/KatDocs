@@ -1,0 +1,50 @@
+---
+title: "IceRiver ASIC Setup"
+summary: "Complete guide for setting up IceRiver KAS-X1 and KAS-X2 miners with Kat Pool"
+topicTitle: "Documentation"
+topicSlug: "documentation"
+prevTitle: "Getting Started"
+prevSlug: "/documentation/fundamentals"
+nextTitle: "Bitmain Setup"
+nextSlug: "/documentation/mining-setup/bitmain"
+---
+
+## IceRiver KAS Setup Guide
+
+This guide covers setup for IceRiver KAS-X1 and KAS-X2 ASIC miners.
+
+### Quick Configuration
+
+```bash
+Pool URL: stratum+tcp://pool.katpool.io:15000
+Worker: YOUR_KASPA_WALLET_ADDRESS
+Password: x
+```
+
+### Web Interface Setup
+
+1. Connect to your miner's web interface (default: 192.168.1.254)
+2. Login with default credentials (admin/admin)
+3. Navigate to "Miner Configuration"
+4. Enter the pool details:
+   - URL: `stratum+tcp://pool.katpool.io:15000`
+   - Worker: Your Kaspa wallet address
+   - Password: x
+
+<Banner type="warning">
+Remember to change your default admin password for security!
+</Banner>
+
+### Optimization Settings
+
+For optimal performance on KAS-X1/X2:
+- Ensure proper cooling (optimal temp: 65-75°C)
+- Maintain stable power supply
+- Use ethernet connection when possible
+
+### Troubleshooting
+
+Common issues and solutions:
+- Connection errors: Check network settings
+- High rejection rate: Verify pool URL
+- Performance issues: Monitor temperatures
