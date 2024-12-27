@@ -14,7 +14,6 @@ type Metadata = {
 type Doc = {
   slug: string;
   metadata: Metadata;
-  content: string;
 };
 
 export const docs: Doc[] = [
@@ -28,8 +27,7 @@ export const docs: Doc[] = [
       topicSlug: 'documentation',
       nextTitle: 'IceRiver Setup',
       nextSlug: '/documentation/mining-setup/iceriver'
-    },
-    content: '...'
+    }
   },
   {
     slug: 'mining-setup/iceriver',
@@ -43,8 +41,7 @@ export const docs: Doc[] = [
       prevSlug: '/documentation/fundamentals',
       nextTitle: 'Bitmain Setup',
       nextSlug: '/documentation/mining-setup/bitmain'
-    },
-    content: '...'
+    }
   },
   {
     slug: 'mining-setup/bitmain',
@@ -58,8 +55,7 @@ export const docs: Doc[] = [
       prevSlug: '/documentation/mining-setup/iceriver',
       nextTitle: 'ASIC Optimization',
       nextSlug: '/documentation/advanced/optimization'
-    },
-    content: '...'
+    }
   },
   {
     slug: 'advanced/optimization',
@@ -73,8 +69,7 @@ export const docs: Doc[] = [
       prevSlug: '/documentation/mining-setup/bitmain',
       nextTitle: 'Pool Statistics',
       nextSlug: '/documentation/advanced/monitoring'
-    },
-    content: '...'
+    }
   },
   {
     slug: 'advanced/monitoring',
@@ -86,8 +81,7 @@ export const docs: Doc[] = [
       topicSlug: 'documentation',
       prevTitle: 'ASIC Optimization',
       prevSlug: '/documentation/advanced/optimization'
-    },
-    content: '...'
+    }
   }
 ];
 
