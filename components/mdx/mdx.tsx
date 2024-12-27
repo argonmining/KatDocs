@@ -1,5 +1,8 @@
 import React from "react";
 import { MDXRemote } from "next-mdx-remote/rsc";
+import remarkGfm from 'remark-gfm';
+import rehypeSlug from 'rehype-slug';
+import rehypePrettyCode from 'rehype-pretty-code';
 import PostLink from './link'
 import PostImage from './image'
 import PostBanner from './banner'
@@ -62,27 +65,24 @@ export function CustomMDX({ source }: { source: any }) {
       components={mdxComponents}
       options={{
         mdxOptions: {
-          remarkPlugins: [require('remark-gfm')],
+          remarkPlugins: [[remarkGfm]],
           rehypePlugins: [
-            require('rehype-slug'),
-            [
-              require('rehype-pretty-code'),
-              {
-                theme: "one-dark-pro",
-                keepBackground: false,
-                onVisitLine(node: any) {
-                  if (node.children.length === 0) {
-                    node.children = [{ type: "text", value: " " }];
-                  }
-                },
-                onVisitHighlightedLine(node: any) {
-                  node.properties.className.push("line--highlighted");
-                },
-                onVisitHighlightedWord(node: any) {
-                  node.properties.className = ["word--highlighted"];
-                },
-              }
-            ]
+            [rehypeSlug],
+            [rehypePrettyCode, {
+              theme: "one-dark-pro",
+              keepBackground: false,
+              onVisitLine(node: any) {
+                if (node.children.length === 0) {
+                  node.children = [{ type: "text", value: " " }];
+                }
+              },
+              onVisitHighlightedLine(node: any) {
+                node.properties.className.push("line--highlighted");
+              },
+              onVisitHighlightedWord(node: any) {
+                node.properties.className = ["word--highlighted"];
+              },
+            }]
           ],
         },
       }}
